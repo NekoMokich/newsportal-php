@@ -17,42 +17,43 @@ class Database {
 
     function __destruct() {
         $this->disconnect();
-}
-
-        function connect() {
-        try {
-            $this->conn = new PDO('mysql:host='.$this->host.';dbname='.$this->baseName.'', $this->user, $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-        }
-    
-    catch (Exception $e) {
-        die('Connection Failed : ' . $e->getMessage());
     }
-}
-return $this->conn;
-}
-function disconnect() {
- if ($this->conn) {
-     $this->conn = null;
- }
-}
 
-function getOne(query) {
-    $stmt = $this->conn->prepare($query);
-    $stmt->execute();
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    $response = $stmt->fetch();
-    return $response;
-}
+    function connect() {
+        try {
+            $this->conn = new PDO(
+                'mysql:host='.$this->host.';dbname='.$this->baseName,
+                $this->user,
+                $this->password,
+                array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
+            );
+            return $this->conn;
+        } catch (Exception $e) {
+            die('Connection Failed : ' . $e->getMessage());
+        }
+    }
 
-function getAll(query) {
-    $stmt = $this->conn->prepare($query);
-    $stmt->execute();
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    $response = $stmt->fetchAll();
-    return $response;
-}
+    function disconnect() {
+        if ($this->conn) {
+            $this->conn = null;
+        }
+    }
 
-function execute(query) {
-    $response = $this->conn->exec($query);
-    return $response;
+    function getOne($query) {
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetch();
+    }
+
+    function getAll($query) {
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+
+    function execute($query) {
+        return $this->conn->exec($query);
+    }
 }
