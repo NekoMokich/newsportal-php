@@ -10,7 +10,7 @@
 </head>
     <body>
         <nav class="one">
-            <ul class="top">
+            <ul class="topmenu">
         <li><a href="#">Kategooriad<i class="fa fa-angle-down"></i> </a>
         <ul class="submenu">
             <?php

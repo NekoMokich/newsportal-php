@@ -7,7 +7,7 @@ class Controller {
     }
 
     public static function AllCategory() {
-        $arr = Category::getAllCategories();
+        $arr = Category::getAllCategory();
         include_once 'view/category.php';
     }
 
