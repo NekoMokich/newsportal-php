@@ -15,6 +15,12 @@ elseif ($paths == 'category' && isset($_GET['id'])) {
 elseif ($paths == 'news' && isset($_GET['id'])) {
     $response = Controller::NewsByID($_GET['id']);
 }
+
+elseif ($paths == 'insertcomment' and isset($_GET['comment'],$_GET['id']))
+{
+    $response = Controller::InsertComment($_GET['comment'], $_GET['id']);
+}
+
 else {
     $response = Controller::error404();
 }
