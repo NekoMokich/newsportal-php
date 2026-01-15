@@ -48,4 +48,17 @@ class Controller {
         $arr = Comments::getCommentsCountByNewsID($newsid);
         ViewComments::CommentsCountWithAncor($arr);
 }
+
+//reg
+public function registerForm()
+    {
+        include_once('view/formRegister.php');
+    }
+
+public function registerUser()
+    {
+        $result = Register::registerUser();
+
+        include_once('view/answerRegister.php')
+    }
 }
