@@ -12,8 +12,8 @@ public static function loginAction() {
  if(isset($logIn) and $logIn==true){
     include_once('viewAdmin/startAdmin.php');
 }
-    else{
-        $_SESSION['errorLogin'] = "Invalid username or password.";
+else{
+        $_SESSION['errorString'] = 'Invalid username or password.';
         include_once ('viewAdmin/formLogin.php');
     }
 }
