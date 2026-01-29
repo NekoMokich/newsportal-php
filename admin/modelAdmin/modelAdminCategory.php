@@ -6,7 +6,7 @@ public static function getCategoryList(){
   $db = new Database();
   $rows = $db->getAll($sql);
 
-  return
+  return $rows;
     }
 }
 ?>
