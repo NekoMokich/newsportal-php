@@ -1,11 +1,9 @@
 <?php
 
-class Register
-{
+class Register{
    
 
-    public function registerUser()
-    {
+    public function registerUser() {
         $controll = array(0 => false, 1 => 'error');
 
         if (isset($_POST['save']))

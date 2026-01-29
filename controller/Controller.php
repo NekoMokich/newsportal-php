@@ -49,16 +49,15 @@ class Controller {
         ViewComments::CommentsCountWithAncor($arr);
 }
 
-//reg
-public function registerForm()
+    // reg
+    public static function registerForm()
     {
         include_once('view/formRegister.php');
     }
 
-public function registerUser()
+    public static function registerUser()
     {
         $result = Register::registerUser();
-
-        include_once('view/answerRegister.php')
+        include_once('view/answerRegister.php');
     }
 }
